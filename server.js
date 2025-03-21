@@ -5,7 +5,7 @@ const fs = require("fs");
 const pdf2table = require("pdf2table");
 
 const app = express();
-app.use(cors());
+app.use( cors());
 
 const upload = multer({ dest: "uploads/" });
 const turniData = JSON.parse(fs.readFileSync("./data/turni.json", "utf8"));
