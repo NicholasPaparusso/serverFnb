@@ -114,7 +114,8 @@ app.post("/upload", upload.single("file"), async (req, res) => {
   });
 });
 
-const PORT = 8080;
+const PORT = process.env.PORT;
+console.log(`La porta assegnata da Railway è: ${PORT}`);
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server in ascolto sulla porta ${PORT}`);
 });
