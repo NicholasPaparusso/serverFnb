@@ -113,7 +113,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
   });
 });
 
-const PORT = process.env.PORT;
+const PORT = 8080;
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server in ascolto sulla porta ${PORT}`);
 });
