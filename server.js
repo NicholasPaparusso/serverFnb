@@ -104,18 +104,32 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     const newPath = "./turni_mensili.pdf";
     fs.renameSync(req.file.path, newPath);
 
+
+
     // Salva il calendario finale in un file JSON
+    const calendarFilePath = "./calendario_finale.json";
     fs.writeFileSync(
-      "calendario_finale.json",
+      calendarFilePath,
       JSON.stringify(calendarioFinale, null, 2),
       "utf8"
     );
-    res.json(calendarioFinale);
+
+    console.log(`✅ File ${calendarFilePath} creato con successo`);
+
+    // Puoi anche aggiungere il percorso del file nella risposta
+    res.json({
+      success: true,
+      message: "File elaborato con successo",
+      data: calendarioFinale,
+      filePath: calendarFilePath
+    });
+
+
+
   });
 });
 
 const PORT = process.env.PORT;
-console.log(`La porta assegnata da Railway è: ${PORT}`);
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server in ascolto sulla porta ${PORT}`);
 });
